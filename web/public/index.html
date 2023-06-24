@@ -1,0 +1,75 @@
+<html>
+<head>
+   <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@900&display=swap" rel="stylesheet">
+   <link href="https://unpkg.com/video.js/dist/video-js.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGlrMGxoaGZjNDd4NHV6dHRreWw3eGg2cnc5ZTk5djFnZWoybnllMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ksE4eFvxZM3oyaFEVo/giphy.gif -->
+
+    <!-- https://img.freepik.com/free-vector/cute-bee-flying-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector_138676-6016.jpg?w=2000
+    
+    -->
+   <div class="main">
+      <div>
+          <h1>Swarm Radio</h1>
+          <!-- <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p> -->
+      
+          <div class="player">
+              <video
+              id="radio-player"
+              class="video-js vjs-big-play-centered vjs-theme-sea"
+              controls
+              preload="auto"
+              autoplay 
+              fluid="true"
+              >
+             </video>
+          </div>
+      </div>
+     
+  
+      <div>
+          made by <a href="https://github.com/istae">istae</a>
+      </div>
+      
+  </div>
+
+
+  <script src="bundle.js"></script>
+
+</body>
+</html>
+
+<style>
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(255 138 0);
+    text-align: center;
+    font-family: 'Lexend Peta', sans-serif;
+    background-color: #e3d3b5;
+    height: 100%;
+}
+
+.player {
+    width: 600px;
+    object-fit: cover;
+    background-color: #e3d3b5;
+}
+
+video {
+    /* object-fit: cover; */
+    background-color: #e3d3b5;
+}
+
+
+</style>

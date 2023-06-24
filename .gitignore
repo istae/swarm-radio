@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.mp3
+*.tar
+bundle.js
+.vscode
