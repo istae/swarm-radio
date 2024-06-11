@@ -42,7 +42,7 @@ Build and Upload the web app
 cd swarw-radio-server/web
 npm run build && cp ./dist/bundle.js ./public/bundle.js
 
-tar -cvf ../swarm-radio.tar -C dist/ .
+tar -cvf swarm-radio.tar -C dist/ .
 
 curl \
     -X POST \
