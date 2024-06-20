@@ -128,6 +128,8 @@ func main() {
 
 		if strings.Contains(file, ".m3u8") {
 
+			fmt.Println(string(data))
+
 			manifest := emplaceM3u8Urls(string(data), store)
 			fmt.Println("manifest", manifest)
 
@@ -181,8 +183,6 @@ func parseRef(r io.Reader) (swarm.Address, error) {
 		return swarm.ZeroAddress, err
 	}
 
-	fmt.Println(string(data))
-
 	var ref referenceResponse
 	err = json.Unmarshal(data, &ref)
 	if err != nil {
@@ -199,13 +199,6 @@ func getFeed(ethAddr, topic string) (uint64, error) {
 		return 0, err
 	}
 
-	data, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return 0, err
-	}
-
-	fmt.Println(string(data))
-
 	if resp.StatusCode == http.StatusNotFound {
 		fmt.Println("feed not found")
 		return 0, nil
@@ -216,8 +209,6 @@ func getFeed(ethAddr, topic string) (uint64, error) {
 	if err != nil {
 		return 0, err
 	}
-
-	fmt.Println("hexIndex", hexIndex)
 
 	binary.BigEndian.Uint64(indexRaw)
 
@@ -251,10 +242,6 @@ func updateFeed(owner string, batchID string, id []byte, data []byte, signer cry
 
 	sigStr := hex.EncodeToString(sch.Data()[swarm.HashSize : swarm.HashSize+swarm.SocSignatureSize])
 	idStr := hex.EncodeToString(id)
-
-	fmt.Println("owner", owner)
-	fmt.Println("idStr", idStr)
-	fmt.Println("sigStr", sigStr)
 
 	// upload soc with topic and id
 	r, err := http.NewRequest("POST", fmt.Sprintf("http://localhost:1633/soc/%s/%s?sig=%s", owner, idStr, sigStr), bytes.NewBuffer(ch.Data()))
@@ -295,8 +282,6 @@ func identifier(topic string, index uint64) []byte {
 	binary.BigEndian.PutUint64(indexB, index)
 
 	topicHex, _ := hex.DecodeString(topic)
-
-	fmt.Println("topic and index", topic, index)
 
 	h, err := crypto.LegacyKeccak256(append(topicHex, indexB...))
 	if err != nil {
